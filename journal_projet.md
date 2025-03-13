@@ -23,3 +23,20 @@
 - Création des VM Debian 12 avec Vagrant.
 - Attribution des adresses IP privées.
 - Test de connectivité avec `ping`.
+
+### 🎯 Objectifs :
+- Comprendre le fonctionnement d’UFW.
+- Appliquer des règles de filtrage.
+
+### ✅ Tâches réalisées :
+- Installation de UFW avec `apt install ufw`.
+- Activation du firewall `ufw enable`.
+- Autorisation du port 80 `ufw allow 80/tcp`.
+
+### ❌ Problèmes :
+- Blocage des connexions SSH.
+  - Solution : `ufw allow 22/tcp`.
+
+### 🔄 Actions à prévoir :
+- Tester l’efficacité du firewall avec `nmap`.
+- Bloquer les ports inutiles.
