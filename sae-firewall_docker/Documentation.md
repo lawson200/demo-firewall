@@ -8,11 +8,12 @@ Ce projet met en place une architecture sécurisée comprenant un firewall, un s
 +------------+          +------------+          +------------+
 | Attacker   | ----X--> | Firewall   | ----->  | Nginx      |
 +------------+          +------------+          +------------+
-                          |
-                          v
-                     +------------+
-                     | DMZ        |
-                     +------------+
+                                     |
+                                     |
+                                     v
+                                +------------+
+                                | DMZ        |
+                                +------------+
 ```
 
 
@@ -105,7 +106,7 @@ docker exec -it sae-firewall-docker-attacker-1 curl -k https://nginx
 ## 5. Gestion du firewall
 Lancer le menu interactif :
 ```sh
-./menu.sh
+./firewall_manager.sh
 ```
 
 ---
