@@ -1,0 +1,12 @@
+FROM debian:latest
+
+# Mise à jour et installation des outils nécessaires
+RUN apt update && apt install -y iptables iproute2 net-tools curl bash
+
+# Copier le script du firewall
+COPY firewall.sh /firewall.sh
+RUN chmod +x /firewall.sh
+
+# Exécuter le script au démarrage et garder le conteneur actif
+CMD ["/bin/bash", "-c", "/firewall.sh && tail -f /dev/null"]
+

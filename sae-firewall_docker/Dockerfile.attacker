@@ -1,0 +1,8 @@
+FROM debian:latest
+
+# Mise à jour et installation des outils de test
+RUN apt update && apt install -y iputils-ping curl net-tools bash
+
+# Garder le conteneur actif
+CMD ["tail", "-f", "/dev/null"]
+

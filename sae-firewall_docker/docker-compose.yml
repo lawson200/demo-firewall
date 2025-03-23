@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  firewall:
+    build:
+      context: .
+      dockerfile: Dockerfile.firewall
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    networks:
+      - frontend_network
+      - dmz_network
+    entrypoint: ["/firewall.sh"]
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "443:443"
+    networks:
+      - dmz_network
+    volumes:
+      - ./certs:/etc/nginx/certs:ro  
+
+
+
+  attacker:
+    build:
+      context: .
+      dockerfile: Dockerfile.attacker
+    networks:
+      - frontend_network
+
+  dmz:
+    image: debian:latest
+    networks:
+      - dmz_network
+
+networks:
+  frontend_network:
+    driver: bridge
+  dmz_network:
+    driver: bridge
+

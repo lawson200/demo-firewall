@@ -1,0 +1,14 @@
+FROM nginx:latest
+
+# Installer net-tools pour avoir netstat
+RUN apt update && apt install -y net-tools
+
+# Désactiver l'affichage de la version Nginx
+RUN echo "server_tokens off;" >> /etc/nginx/nginx.conf
+
+# Copier la configuration Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Exposer le port 443 pour HTTPS
+EXPOSE 443
+
